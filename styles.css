@@ -1,5 +1,6 @@
 body {
-    background-color: rgb(62, 58, 5);
+    background-color: rgb(40, 37, 9);
+    position: relative;
 }
 
 #block-list {
@@ -17,6 +18,7 @@ body {
     display: flex;
     flex-flow: row;
     padding: 5px;
+    gap: 10px;
     font-size: medium;
     border: none;
     border-radius: 10px;
@@ -47,4 +49,48 @@ body {
 .hostname-input {
     border: none;
     width: 100%;
+}
+
+#hover {
+    border-radius: 5px;
+    display: none;
+    position: absolute;
+    background-color: black;
+    width: 100px;
+    transition: all;
+    transition-duration: .2s;
+    opacity: 0;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    pointer-events: none;
+    font-size: small;
+}
+
+input[type=checkbox] {
+    cursor: pointer;
+    transition: all;
+    transition-duration: .2s;
+}
+
+input[type=checkbox]:hover {
+    scale: 1.5;
+}
+button, .list-item-button{
+    transition: all;
+    transition-duration: .2s;
+    cursor: pointer;
+}
+button:hover {
+    scale: 1.5;
+    background-color: white;
+}
+
+#save-blocklist:hover {
+    background-color: lime;
+}
+
+.list-item-button:hover {
+    scale: 1.8;
+    background-color: red;
 }

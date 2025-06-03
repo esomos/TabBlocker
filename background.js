@@ -25,7 +25,6 @@ const getHostname = (url) => {
 chrome.tabs.onActivated.addListener(async (activeInfo) => {
     try {
         const tab = await chrome.tabs.get(activeInfo.tabId);
-        console.log("tab activation detected new url - ", tab.url)
         currentUrl = tab.url;
 
     } catch (error) {
@@ -36,7 +35,6 @@ chrome.tabs.onActivated.addListener(async (activeInfo) => {
 // Listen for tab updates to track the current website
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (!(tab.active && changeInfo.url)) return;
-    console.log("update detected from - ", currentUrl, "to - ", changeInfo.url);
     const changeHostname = getHostname(changeInfo.url);
     const currentHostname = getHostname(currentUrl);
     if (changeHostname !== currentHostname) {
@@ -47,8 +45,6 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
 // Listen for new tab creation
 chrome.tabs.onCreated.addListener((tab) => {
-    console.log("new tab detected from - ", currentUrl)
-    console.log("pending url of new tab is ", tab.pendingUrl);
     if (!tab.id || !currentUrl) return;
     const currentHostname = getHostname(currentUrl);
     if (getHostname(tab.pendingUrl) === currentHostname) return;
@@ -58,7 +54,6 @@ chrome.tabs.onCreated.addListener((tab) => {
 function blockUpdate(tabId, changeUrl, currentHostname, prevUrl) {
     if (!blocklist[currentHostname]) return;
     if (blocklist[currentHostname].blockUrl) {
-        console.log("blocking update of hostname - ", currentHostname, " to - ", changeUrl);
         chrome.tabs.update(tabId, { url: prevUrl });
         if (!(blocklist[currentHostname]?.silent || silentAll)) {
             showNotification("stopped a url change!", changeUrl, currentHostname);
@@ -74,7 +69,6 @@ function blockTab(tab, currentHostname) {
     if (blockedHostname.blockTabs) {
         // Immediately close the new tab
         chrome.tabs.remove(tab.id);
-        console.log("removed new tab created by - ", currentHostname);
         if (!(blockedHostname?.silent || silentAll)) {
             showNotification("tab blocked!", tab.pendingUrl, currentHostname);
         }

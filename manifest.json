@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Tab Blocker",
     "version": "1.0",
-    "description": "Blocks new tabs based on the website that created them.",
+    "description": "Blocks unwanted new tabs created by ads",
     "permissions": ["tabs", "notifications", "storage"],
     "host_permissions": ["<all_urls>"],
     "background": {
