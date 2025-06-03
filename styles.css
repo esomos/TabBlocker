@@ -1,0 +1,50 @@
+body {
+    background-color: rgb(62, 58, 5);
+}
+
+#block-list {
+    display: flex;
+    flex-flow: column;
+    row-gap: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    min-width: 300px;
+}
+.list-item {
+    background-color: white;
+}
+.list-item, .section {
+    display: flex;
+    flex-flow: row;
+    padding: 5px;
+    font-size: medium;
+    border: none;
+    border-radius: 10px;
+}
+.section {
+    column-gap: 5px;
+    justify-content: space-evenly;
+}
+.section-button {
+    border: none;
+    border-radius: 10px;
+    background-color: #f5f1ba;
+}
+
+.list-item-checkbox {
+    background-color: black;
+}
+
+.list-item-button {
+    border: none;
+    background-color:  #f5f1ba;
+    border-radius: 10px;
+}
+.list-item-button:hover, .section-button:hover {
+    scale: 1.1;
+}
+
+.hostname-input {
+    border: none;
+    width: 100%;
+}

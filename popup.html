@@ -1,0 +1,29 @@
+<!-- popup.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blocklist Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h2 style="color: white; text-align: center;">Tab Blocker</h2>
+    <div class="section">
+        <span style="color: white;">Disable Notification</span>
+        <input id="silent-all" type="checkbox">
+    </div>
+    <h2 style="color: white; text-align: center;">Manage Block List</h2>
+    <div id="block-list">
+        <!-- list items from popup.js -->
+    </div>
+    <div class="section">
+        <button id="add-current" class="section-button">Add this site</button>
+        <button id="save-blocklist" class="section-button">Save</button>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>
